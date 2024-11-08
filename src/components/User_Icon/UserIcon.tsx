@@ -7,18 +7,18 @@ type email = {
 export const UserIcon = ({ email }: email) => {
   if (email != "") {
     const getInitials = (name: string) => {
-      // const initials = name.split("_").map((i) => i[0].toUpperCase());
-      // return initials.length == 2 ? initials.join("") : initials[0];
+      const initials = name.split("_").map((i) => i[0].toUpperCase());
+      return initials.length == 2 ? initials.join("") : initials[0];
     };
 
-    // const initials = getInitials(email);
+    const initials = getInitials(email);
 
     return (
       <>
         <Avatar>
           <AvatarImage src="" />
           <AvatarFallback className="text-black">
-            {/* {initials.toUpperCase()} */}
+            {initials.toUpperCase()}
           </AvatarFallback>
         </Avatar>
       </>

@@ -41,7 +41,7 @@ export const Links = () => {
   const totalPage = fetchedData?.totalPages ?? 1;
 
   if (error) {
-    if (errorCode == 403) removeCurrentToken("currentToken");
+    // if (errorCode == 403) removeCurrentToken("currentToken");
     return (
       <>
         <p>Error {error.message}</p>

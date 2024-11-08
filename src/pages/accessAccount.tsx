@@ -1,11 +1,3 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 import { useGoogleLogin } from "@react-oauth/google";
@@ -16,7 +8,7 @@ import { useCookies } from "react-cookie";
 export const AccessAccount = () => {
   const [user, setUser] = useState([]);
   const [, setCurrentUser] = useCookies(["currentUser"]);
-  const [, setCurrentToken] = useCookies(["currentToken"]);
+  const [currentToken, setCurrentToken] = useCookies(["currentToken"]);
 
   const LogIn = useGoogleLogin({
     onSuccess: (codeResponse: any) => setUser(codeResponse),
@@ -46,9 +38,13 @@ export const AccessAccount = () => {
             }
           );
           if (response.data.success == "Email is an LSCS member") {
+            console.log(user.access_token);
             setCurrentUser("currentUser", email, { path: "/" });
-            setCurrentToken("currentToken", user, { path: "/" });
-            window.location.replace("/");
+            setCurrentToken("currentToken", user.access_token, { path: "/" });
+            setTimeout(() => {
+              console.log("Redirecting to home page");
+              window.location.replace("/");
+            }, 200);
           }
           console.log(response);
         } catch (e) {

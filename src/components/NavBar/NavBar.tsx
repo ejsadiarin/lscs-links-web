@@ -95,7 +95,7 @@ export const NavBar = () => {
           {"currentToken" in currentToken ? (
             <DropdownMenu>
               <DropdownMenuTrigger>
-                <UserIcon email={user.email}></UserIcon>{" "}
+                <UserIcon email={user}></UserIcon>{" "}
               </DropdownMenuTrigger>
               <DropdownMenuContent className=" bg-[#030711] border-2 border-[#1D283A] rounded-lg text-white">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
