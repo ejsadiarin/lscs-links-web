@@ -4,6 +4,15 @@ import { defineConfig } from "vite"
  
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      "/auth": {
+        target: "https://auth.app.dlsu-lscs.org",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/auth/, ""),
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

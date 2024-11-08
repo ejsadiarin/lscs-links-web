@@ -37,6 +37,7 @@ export const NavBar = () => {
   const user = currentUser.currentUser;
 
   const [currentToken, , removeCurrentToken] = useCookies(["currentToken"]);
+  console.log(user);
 
   return (
     <>
@@ -108,9 +109,7 @@ export const NavBar = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          ) : (
-            <UserIcon email={""}></UserIcon>
-          )}
+          ) : null}
         </div>
         {"currentToken" in currentToken ? (
           <div className="flex md:hidden">

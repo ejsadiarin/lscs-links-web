@@ -20,8 +20,8 @@ export const LinkShortener = () => {
   ];
 
   //check if there is current token
-  const [currentToken, ,] = useCookies(["currentToken"]);
-  if (!("currentToken" in currentToken))
+  const [currentUser, ,] = useCookies(["currentUser"]);
+  if (!("currentUser" in currentUser))
     window.location.replace("/accessAccount");
 
   return (
