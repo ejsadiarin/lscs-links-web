@@ -51,6 +51,7 @@ export const GoogleLogIn = () => {
                 "currentLinksToken",
                 response.data.jwt_token
               );
+              console.log("nigga");
               window.location.reload();
               window.location.replace("/");
             }
