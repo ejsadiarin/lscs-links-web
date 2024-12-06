@@ -10,9 +10,7 @@ export const GoogleLogIn = () => {
   const [user, setUser] = useState<any>();
   const [, setCurrentUser] = useCookies<string>(["currentUser"]);
   const [currentToken, setCurrentToken] = useCookies<string>(["currentToken"]);
-  const [currentLinksToken, setCurrentLinksToken] = useCookies<string>([
-    "currentLinksToken",
-  ]);
+  const [, setCurrentLinksToken] = useCookies<string>(["currentLinksToken"]);
 
   const logIn = useGoogleLogin({
     onSuccess: (response) => setUser(response),

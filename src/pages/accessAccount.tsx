@@ -1,5 +1,4 @@
 import { GoogleLogIn } from "@/components/GoogleLogIn/GoogleLogIn";
-import { Button } from "@/components/ui/button";
 
 export const AccessAccount = () => {
   return (
