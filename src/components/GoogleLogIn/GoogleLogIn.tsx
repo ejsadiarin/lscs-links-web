@@ -101,6 +101,7 @@ export const GoogleLogIn = () => {
             });
           }
         };
+        console.log(response);
         checkEmail(response.data.email);
       } catch (e) {
         console.log(e);
