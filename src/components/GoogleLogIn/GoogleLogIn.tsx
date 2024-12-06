@@ -3,8 +3,8 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { useToast } from "@/hooks/use-toast";
-import { ToastAction } from "@/components/ui/toast";
+// import { useToast } from "@/hooks/use-toast";
+// import { ToastAction } from "@/components/ui/toast";
 
 export const GoogleLogIn = () => {
   const [user, setUser] = useState<any>();
@@ -20,7 +20,7 @@ export const GoogleLogIn = () => {
     },
   });
 
-  const { toast } = useToast();
+  // const { toast } = useToast();
 
   useEffect(() => {
     const getGoogleAccount = async () => {
@@ -60,49 +60,51 @@ export const GoogleLogIn = () => {
           }
         };
 
-        const checkEmail = async (email: string) => {
-          try {
-            const response = await axios.post(
-              "/auth/check-email",
-              { email: email },
-              {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-            if (response.data.state == "present") {
-              setCurrentUser("currentUser", email, { path: "/" });
-              setCurrentToken("currentToken", user.access_token, { path: "/" });
-              getLogin(currentToken.currentToken);
-            } else if (response.data.state == "absent") {
-              toast({
-                variant: "destructive",
-                title: "bossing d ka member ng lscs",
-                description: "sino ka ba hahahaah",
-                action: (
-                  <ToastAction altText="Try again">
-                    try mo ulet hehehe
-                  </ToastAction>
-                ),
-              });
-            }
-          } catch (e) {
-            console.log(e);
-            toast({
-              variant: "destructive",
-              title: "bossing d ka member ng lscs",
-              description: "sino ka ba hahahaah",
-              action: (
-                <ToastAction altText="Try again">
-                  try mo ulet hehehe
-                </ToastAction>
-              ),
-            });
-          }
-        };
-        console.log(response);
-        checkEmail(response.data.email);
+        // const checkEmail = async (email: string) => {
+        //   try {
+        //     const response = await axios.post(
+        //       "/auth/check-email",
+        //       { email: email },
+        //       {
+        //         headers: {
+        //           "Content-Type": "application/json",
+        //         },
+        //       }
+        //     );
+        //     if (response.data.state == "present") {
+        //       setCurrentUser("currentUser", email, { path: "/" });
+        //       setCurrentToken("currentToken", user.access_token, { path: "/" });
+        //       getLogin(currentToken.currentToken);
+        //     } else if (response.data.state == "absent") {
+        //       toast({
+        //         variant: "destructive",
+        //         title: "bossing d ka member ng lscs",
+        //         description: "sino ka ba hahahaah",
+        //         action: (
+        //           <ToastAction altText="Try again">
+        //             try mo ulet hehehe
+        //           </ToastAction>
+        //         ),
+        //       });
+        //     }
+        //   } catch (e) {
+        //     console.log(e);
+        //     toast({
+        //       variant: "destructive",
+        //       title: "bossing d ka member ng lscs",
+        //       description: "sino ka ba hahahaah",
+        //       action: (
+        //         <ToastAction altText="Try again">
+        //           try mo ulet hehehe
+        //         </ToastAction>
+        //       ),
+        //     });
+        //   }
+        // };
+        // checkEmail(response.data.email);
+        setCurrentUser("currentUser", response.data.email, { path: "/" });
+        setCurrentToken("currentToken", user.access_token, { path: "/" });
+        getLogin(currentToken.currentToken);
       } catch (e) {
         console.log(e);
       }
