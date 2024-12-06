@@ -28,10 +28,10 @@ export const Link = ({
   qr_preview,
   qr_download,
 }: linkData) => {
-  const [currentToken] = useCookies(["currentToken"]);
-  const token = currentToken.currentToken;
+  const [currentLinksToken] = useCookies(["currentLinksToken"]);
+  const token = currentLinksToken.currentLinksToken;
   const { data, loading } = useFetch(
-    `https://lscs.info/analytics/${shortLink}`,
+    `https://linksapidev.app.dlsu-lscs.org/analytics/${shortLink}`,
     token
   );
 
