@@ -51,7 +51,8 @@ export const GoogleLogIn = () => {
                 "currentLinksToken",
                 response.data.jwt_token
               );
-              console.log("nigga");
+              setCurrentUser("currentUser", response.data.email, { path: "/" });
+              setCurrentToken("currentToken", user.access_token, { path: "/" });
               window.location.reload();
               window.location.replace("/");
             }
@@ -102,9 +103,7 @@ export const GoogleLogIn = () => {
         //   }
         // };
         // checkEmail(response.data.email);
-        setCurrentUser("currentUser", response.data.email, { path: "/" });
-        setCurrentToken("currentToken", user.access_token, { path: "/" });
-        getLogin(currentToken.currentToken);
+        getLogin(user.access_token);
       } catch (e) {
         console.log(e);
       }
