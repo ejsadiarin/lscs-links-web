@@ -9,7 +9,7 @@ import { useCookies } from "react-cookie";
 export const GoogleLogIn = () => {
   const [user, setUser] = useState<any>();
   const [, setCurrentUser] = useCookies<string>(["currentUser"]);
-  const [currentToken, setCurrentToken] = useCookies<string>(["currentToken"]);
+  const [, setCurrentToken] = useCookies<string>(["currentToken"]);
   const [, setCurrentLinksToken] = useCookies<string>(["currentLinksToken"]);
 
   const logIn = useGoogleLogin({
@@ -35,7 +35,7 @@ export const GoogleLogIn = () => {
           }
         );
 
-        const getLogin = async (token: string) => {
+        const getLogin = async (token: string, email: string) => {
           try {
             const response = await axios.post(
               "https://linksapidev.app.dlsu-lscs.org/auth/login",
@@ -51,7 +51,7 @@ export const GoogleLogIn = () => {
                 "currentLinksToken",
                 response.data.jwt_token
               );
-              setCurrentUser("currentUser", response.data.email, { path: "/" });
+              setCurrentUser("currentUser", email, { path: "/" });
               setCurrentToken("currentToken", user.access_token, { path: "/" });
               window.location.reload();
               window.location.replace("/");
@@ -103,7 +103,7 @@ export const GoogleLogIn = () => {
         //   }
         // };
         // checkEmail(response.data.email);
-        getLogin(user.access_token);
+        getLogin(user.access_token, response.data.email);
       } catch (e) {
         console.log(e);
       }
