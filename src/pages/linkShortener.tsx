@@ -19,6 +19,7 @@ export const LinkShortener = () => {
     { name: "Academics", abbreviation: "acads" },
   ];
 
+  console.log("test build");
   //check if there is current token
   const [currentToken, ,] = useCookies(["currentToken"]);
   if (!("currentToken" in currentToken))
