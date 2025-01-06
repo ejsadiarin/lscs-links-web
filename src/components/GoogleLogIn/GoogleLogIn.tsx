@@ -46,6 +46,7 @@ export const GoogleLogIn = () => {
                 },
               }
             );
+            console.log(response.data);
             if (response.data.status == "success") {
               setCurrentLinksToken(
                 "currentLinksToken",
@@ -53,7 +54,6 @@ export const GoogleLogIn = () => {
               );
               setCurrentUser("currentUser", email, { path: "/" });
               setCurrentToken("currentToken", user.access_token, { path: "/" });
-              console.log("updated #1");
               window.location.reload();
               window.location.replace("/");
             }
