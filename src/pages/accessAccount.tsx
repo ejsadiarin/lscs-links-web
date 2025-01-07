@@ -1,6 +1,20 @@
 import { GoogleLogIn } from "@/components/GoogleLogIn/GoogleLogIn";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useCookies } from "react-cookie";
 
 export const AccessAccount = () => {
+  const navigate = useNavigate();
+  const [currentToken, ,] = useCookies(["currentToken"]);
+
+  useEffect(() => {
+    if (currentToken) {
+      navigate("/", { replace: true });
+    } else {
+      navigate("/accessAccount", { replace: true });
+    }
+  }, [currentToken, navigate]);
+
   return (
     <>
       <div className="min-h-screen bg-[#000000] text-white px-28 py-8">
