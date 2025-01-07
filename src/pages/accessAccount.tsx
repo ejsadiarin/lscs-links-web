@@ -10,8 +10,6 @@ export const AccessAccount = () => {
   useEffect(() => {
     if (currentToken) {
       navigate("/", { replace: true });
-    } else {
-      navigate("/accessAccount", { replace: true });
     }
   }, [currentToken, navigate]);
 
