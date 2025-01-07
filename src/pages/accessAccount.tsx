@@ -1,6 +1,11 @@
 import { GoogleLogIn } from "@/components/GoogleLogIn/GoogleLogIn";
+import { useCookies } from "react-cookie";
 
 export const AccessAccount = () => {
+  //check if there is current token
+  const [currentToken, ,] = useCookies(["currentToken"]);
+  if ("currentToken" in currentToken) window.location.replace("/");
+
   return (
     <>
       <div className="min-h-screen bg-[#000000] text-white px-28 py-8">
