@@ -8,7 +8,7 @@ export const AccessAccount = () => {
   const [currentToken, ,] = useCookies(["currentToken"]);
 
   useEffect(() => {
-    if (currentToken) {
+    if ("currentToken" in currentToken) {
       navigate("/", { replace: true });
     }
   }, [currentToken, navigate]);
