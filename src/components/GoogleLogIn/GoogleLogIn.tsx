@@ -13,7 +13,10 @@ export const GoogleLogIn = () => {
   const [, setCurrentLinksToken] = useCookies<string>(["currentLinksToken"]);
 
   const logIn = useGoogleLogin({
-    onSuccess: (response) => setUser(response),
+    onSuccess: (response) => {
+      console.log("on login: " + response);
+      setUser(response);
+    },
     onError: (error) => {
       console.log(error);
       setUser(null);
