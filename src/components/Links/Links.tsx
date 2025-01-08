@@ -29,19 +29,19 @@ type Data = {
 };
 
 export const Links = () => {
-  const [currentToken, , removeCurrentToken] = useCookies(["currentToken"]);
+  const [currentLinksToken, ,] = useCookies(["currentLinksToken"]);
 
   const [page, setPage] = useState(1);
-  const { data, loading, error, errorCode } = useFetch(
-    "https://lscs.info/admin/links?limit=10&page=" + page,
-    currentToken.currentToken
+  const { data, loading, error } = useFetch(
+    "https://linksapidev.app.dlsu-lscs.org/admin/links?limit=10&page=" + page,
+    currentLinksToken.currentLinksToken
   );
   const fetchedData: Data | null = data as Data | null;
 
   const totalPage = fetchedData?.totalPages ?? 1;
 
   if (error) {
-    if (errorCode == 403) removeCurrentToken("currentToken");
+    // if (errorCode == 403) removeCurrentToken("currentToken");
     return (
       <>
         <p>Error {error.message}</p>
