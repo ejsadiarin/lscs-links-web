@@ -38,7 +38,7 @@ export const GoogleLogIn = () => {
         const getLogin = async (token: string, email: string) => {
           try {
             const response = await axios.post(
-              "https://linksapidev.app.dlsu-lscs.org/auth/login",
+              "https://lscs.info/auth/login",
               { token: token },
               {
                 headers: {

@@ -33,7 +33,7 @@ export const Links = () => {
 
   const [page, setPage] = useState(1);
   const { data, loading, error } = useFetch(
-    "https://linksapidev.app.dlsu-lscs.org/admin/links?limit=10&page=" + page,
+    "https://lscs.info/admin/links?limit=10&page=" + page,
     currentLinksToken.currentLinksToken
   );
   const fetchedData: Data | null = data as Data | null;
