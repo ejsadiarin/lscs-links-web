@@ -14,7 +14,6 @@ export const GoogleLogIn = () => {
 
   const logIn = useGoogleLogin({
     onSuccess: (response) => {
-      console.log("on login: " + response);
       setUser(response);
     },
     onError: (error) => {
