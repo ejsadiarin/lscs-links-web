@@ -13,7 +13,9 @@ export const GoogleLogIn = () => {
   const [, setCurrentLinksToken] = useCookies<string>(["currentLinksToken"]);
 
   const logIn = useGoogleLogin({
-    onSuccess: (response) => setUser(response),
+    onSuccess: (response) => {
+      setUser(response);
+    },
     onError: (error) => {
       console.log(error);
       setUser(null);
@@ -38,7 +40,7 @@ export const GoogleLogIn = () => {
         const getLogin = async (token: string, email: string) => {
           try {
             const response = await axios.post(
-              "https://linksapidev.app.dlsu-lscs.org/auth/login",
+              "https://lscs.info/auth/login",
               { token: token },
               {
                 headers: {
