@@ -29,12 +29,12 @@ export const Link = ({
   qr_download,
 }: linkData) => {
   //Constant URI LINK
-  const URLLINK = process.env.REACT_APP_LINKS_URL;
+  // const URLLINK = process.env.REACT_APP_LINKS_URL;
 
   const [currentLinksToken] = useCookies(["currentLinksToken"]);
   const token = currentLinksToken.currentLinksToken;
   const { data, loading } = useFetch(
-    `${URLLINK}/analytics/${shortLink}`,
+    `https://linksapidev.app.dlsu-lscs.org/analytics/${shortLink}`,
     token
   );
 

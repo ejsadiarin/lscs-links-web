@@ -26,6 +26,7 @@ export const GoogleLogIn = () => {
   });
 
   // const { toast } = useToast();
+  console.log(URLLINK);
 
   useEffect(() => {
     const getGoogleAccount = async () => {
@@ -43,7 +44,7 @@ export const GoogleLogIn = () => {
         const getLogin = async (token: string, email: string) => {
           try {
             const response = await axios.post(
-              `${URLLINK}/auth/login`,
+              `https://linksapidev.app.dlsu-lscs.org/auth/login`,
               { token: token },
               {
                 headers: {
