@@ -8,7 +8,8 @@ import { useCookies } from "react-cookie";
 
 export const GoogleLogIn = () => {
   //Constant URI LINK
-  const URLLINK = process.env.REACT_APP_LINKS_URL;
+  const URLLINK =
+    process.env.REACT_APP_LINKS_URL || "https://linksapidev.app.dlsu-lscs.org";
 
   const [user, setUser] = useState<any>();
   const [, setCurrentUser] = useCookies<string>(["currentUser"]);
@@ -26,7 +27,6 @@ export const GoogleLogIn = () => {
   });
 
   // const { toast } = useToast();
-  console.log(URLLINK);
 
   useEffect(() => {
     const getGoogleAccount = async () => {
@@ -44,7 +44,7 @@ export const GoogleLogIn = () => {
         const getLogin = async (token: string, email: string) => {
           try {
             const response = await axios.post(
-              `https://linksapidev.app.dlsu-lscs.org/auth/login`,
+              `${URLLINK}/auth/login`,
               { token: token },
               {
                 headers: {

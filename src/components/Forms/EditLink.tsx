@@ -37,8 +37,12 @@ type editLink = {
 };
 
 export const EditLink = ({ linkID }: editLink) => {
-  const [currentToken] = useCookies(["currentToken"]);
-  const token = currentToken.currentToken;
+  //Constant URI LINK
+  const URLLINK =
+    process.env.REACT_APP_LINKS_URL || "https://linksapidev.app.dlsu-lscs.org";
+
+  const [currentLinksToken] = useCookies(["currentLinksToken"]);
+  const token = currentLinksToken.currentLinksToken;
 
   const form = useForm<z.infer<typeof linkSchema>>({
     resolver: zodResolver(linkSchema),
@@ -54,7 +58,7 @@ export const EditLink = ({ linkID }: editLink) => {
     const editData = async () => {
       try {
         const response = await axios.put(
-          "https://lscs.info/admin/links/" + linkID,
+          `${URLLINK}/admin/links/` + linkID,
           { longlink: values.longLink, shortlink: values.shortLink },
           {
             headers: {

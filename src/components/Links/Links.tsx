@@ -30,13 +30,14 @@ type Data = {
 
 export const Links = () => {
   //Constant URI LINK
-  // const URLLINK = process.env.REACT_APP_LINKS_URL;
+  const URLLINK =
+    process.env.REACT_APP_LINKS_URL || "https://linksapidev.app.dlsu-lscs.org";
 
   const [currentLinksToken, ,] = useCookies(["currentLinksToken"]);
 
   const [page, setPage] = useState(1);
   const { data, loading, error } = useFetch(
-    `https://linksapidev.app.dlsu-lscs.org/admin/links?limit=10&page=` + page,
+    `${URLLINK}/admin/links?limit=10&page=` + page,
     currentLinksToken.currentLinksToken
   );
   const fetchedData: Data | null = data as Data | null;

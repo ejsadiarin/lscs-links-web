@@ -30,8 +30,12 @@ const linkSchema = z.object({
 });
 
 export const CreateLink = () => {
-  const [currentToken] = useCookies(["currentToken"]);
-  const token = currentToken.currentToken;
+  //Constant URI LINK
+  const URLLINK =
+    process.env.REACT_APP_LINKS_URL || "https://linksapidev.app.dlsu-lscs.org";
+
+  const [currentLinksToken] = useCookies(["currentLinksToken"]);
+  const token = currentLinksToken.currentLinksToken;
 
   const form = useForm<z.infer<typeof linkSchema>>({
     resolver: zodResolver(linkSchema),
@@ -46,7 +50,7 @@ export const CreateLink = () => {
     const postData = async () => {
       try {
         const response = await axios.post(
-          "https://lscs.info/admin/create",
+          `${URLLINK}/admin/create`,
           { longlink: values.longLink, shortlink: values.shortLink },
           {
             headers: {
