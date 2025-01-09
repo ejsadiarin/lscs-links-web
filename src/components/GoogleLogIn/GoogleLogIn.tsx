@@ -7,6 +7,10 @@ import { useCookies } from "react-cookie";
 // import { ToastAction } from "@/components/ui/toast";
 
 export const GoogleLogIn = () => {
+  //Constant URI LINK
+  const URLLINK =
+    process.env.REACT_APP_LINKS_URL || "https://linksapidev.app.dlsu-lscs.org";
+
   const [user, setUser] = useState<any>();
   const [, setCurrentUser] = useCookies<string>(["currentUser"]);
   const [, setCurrentToken] = useCookies<string>(["currentToken"]);
@@ -40,7 +44,7 @@ export const GoogleLogIn = () => {
         const getLogin = async (token: string, email: string) => {
           try {
             const response = await axios.post(
-              "https://lscs.info/auth/login",
+              `${URLLINK}/auth/login`,
               { token: token },
               {
                 headers: {

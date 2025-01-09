@@ -5,10 +5,14 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Toaster } from "@/components/ui/toaster";
 
 const App = () => {
+  const clientID =
+    (process.env.REACT_APP_CLIENT_ID as string) ||
+    "631323246333-a20r4lll1rs1k93viaobh6f2neushf2t.apps.googleusercontent.com";
+
   return (
     <>
       <CookiesProvider>
-        <GoogleOAuthProvider clientId="631323246333-l06jvts5smd7u24e2egdifn05qaqbodu.apps.googleusercontent.com">
+        <GoogleOAuthProvider clientId={clientID}>
           <Router>
             <Layout></Layout>
             <Toaster />
